@@ -1,0 +1,90 @@
+[gd_scene load_steps=10 format=3 uid="uid://c5c48sskwhvhq"]
+
+[ext_resource type="Script" path="res://Scenes/scene_finale.gd" id="1_emaj6"]
+[ext_resource type="PackedScene" uid="uid://bvpms4ewd2d3a" path="res://UI/HUD.tscn" id="1_n75lr"]
+[ext_resource type="Texture2D" uid="uid://ls358on7hi3f" path="res://Backgrounds/lump.png" id="2_dpht3"]
+[ext_resource type="Script" path="res://Scenes/interactable_object.gd" id="3_p81xi"]
+[ext_resource type="FontFile" uid="uid://b5jovln421ieq" path="res://UI/Fonts/IBMPlexMono-Thin.ttf" id="4_0bto8"]
+[ext_resource type="AudioStream" uid="uid://dhrxjjx4cfj2s" path="res://Audio/squish.mp3" id="6_qnb2v"]
+[ext_resource type="AudioStream" uid="uid://ctu7cw63jvm2a" path="res://Audio/thrashing.mp3" id="7_7j4r5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bxlb4"]
+radius = 127.738
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dk8gk"]
+bg_color = Color(0, 0, 0, 0.494118)
+
+[node name="Finale" type="Node"]
+script = ExtResource("1_emaj6")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="IckyThump" type="TextureRect" parent="CanvasLayer"]
+offset_right = 600.0
+offset_bottom = 600.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_dpht3")
+
+[node name="Struggle" type="StaticBody2D" parent="CanvasLayer"]
+input_pickable = true
+script = ExtResource("3_p81xi")
+dlg_file = "Scene04_end"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Struggle"]
+position = Vector2(294, 290)
+shape = SubResource("CircleShape2D_bxlb4")
+
+[node name="Label" type="Label" parent="CanvasLayer/Struggle"]
+offset_left = 115.0
+offset_top = 466.0
+offset_right = 205.0
+offset_bottom = 489.0
+theme_override_fonts/font = ExtResource("4_0bto8")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_dk8gk")
+text = "Struggle
+"
+
+[node name="HUD" parent="." instance=ExtResource("1_n75lr")]
+
+[node name="dialogue" parent="HUD" index="0"]
+offset_top = -20.0
+offset_bottom = 20.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+text = "Test text"
+
+[node name="End" type="Button" parent="HUD"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -125.0
+offset_top = -96.0
+offset_right = -63.0
+offset_bottom = -48.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_0bto8")
+theme_override_font_sizes/font_size = 30
+disabled = true
+text = "End"
+
+[node name="Timer" type="Timer" parent="HUD"]
+wait_time = 2.0
+one_shot = true
+
+[node name="squish" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_qnb2v")
+volume_db = 6.0
+
+[node name="thrash" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_7j4r5")
+volume_db = 6.0
+
+[connection signal="pressed" from="HUD/End" to="." method="_on_end_pressed"]
+
+[editable path="HUD"]

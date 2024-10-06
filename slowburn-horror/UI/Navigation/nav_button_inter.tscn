@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://cw7jl03ltos6s"]
+
+[ext_resource type="Script" path="res://Scenes/inter_nav.gd" id="1_reyyf"]
+[ext_resource type="Texture2D" uid="uid://c5toia54rit6u" path="res://UI/Cursors/arrow-right.png" id="2_na3ne"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_18c5i"]
+size = Vector2(80.5, 598)
+
+[node name="Left" type="StaticBody2D"]
+input_pickable = true
+script = ExtResource("1_reyyf")
+cursor = ExtResource("2_na3ne")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(41.75, 299)
+shape = SubResource("RectangleShape2D_18c5i")

@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://chs05hqloqs6v"]
+
+[ext_resource type="Script" path="res://UI/Navigation/nav_button.gd" id="1_mbgt3"]
+[ext_resource type="PackedScene" uid="uid://dx7rqmqcp178c" path="res://Scenes/Attic/attic_north.tscn" id="2_qg3m7"]
+
+[node name="TestScene" type="Node"]
+
+[node name="Button" type="Button" parent="."]
+visible = false
+offset_left = 131.0
+offset_top = 114.0
+offset_right = 225.0
+offset_bottom = 182.0
+text = "click me"
+script = ExtResource("1_mbgt3")
+
+[node name="North" parent="." instance=ExtResource("2_qg3m7")]
+
+[connection signal="pressed" from="Button" to="Button" method="_on_button_pressed"]
+[connection signal="pressed" from="Button" to="Button" method="change_scene"]
+
+[editable path="North"]
+[editable path="North/obj_mouse_hole"]
+[editable path="North/obj_window"]

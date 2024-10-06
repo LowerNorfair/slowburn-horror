@@ -1,0 +1,36 @@
+[gd_scene load_steps=8 format=3 uid="uid://c80lt7drqyoxn"]
+
+[ext_resource type="Script" path="res://Scenes/Attic/scene_attic.gd" id="1_03gxu"]
+[ext_resource type="PackedScene" uid="uid://dx7rqmqcp178c" path="res://Scenes/Attic/attic_north.tscn" id="2_oivdo"]
+[ext_resource type="PackedScene" uid="uid://bc4e804lu6qur" path="res://Scenes/Attic/attic_west.tscn" id="3_371rw"]
+[ext_resource type="PackedScene" uid="uid://ba50l45by68jr" path="res://scene_manager.tscn" id="4_hjqgg"]
+[ext_resource type="PackedScene" uid="uid://bcgxid7046x1a" path="res://Scenes/Attic/attic_south.tscn" id="4_x34gn"]
+[ext_resource type="PackedScene" uid="uid://b8wmv8qct3ihn" path="res://Scenes/Attic/attic_east.tscn" id="5_fxscm"]
+[ext_resource type="PackedScene" uid="uid://bvpms4ewd2d3a" path="res://UI/HUD.tscn" id="10_nqkf1"]
+
+[node name="Attic" type="Node"]
+script = ExtResource("1_03gxu")
+
+[node name="North" parent="." instance=ExtResource("2_oivdo")]
+
+[node name="West" parent="." instance=ExtResource("3_371rw")]
+process_mode = 4
+visible = false
+
+[node name="South" parent="." instance=ExtResource("4_x34gn")]
+process_mode = 4
+visible = false
+
+[node name="East" parent="." instance=ExtResource("5_fxscm")]
+process_mode = 4
+visible = false
+
+[node name="SceneManager" parent="." instance=ExtResource("4_hjqgg")]
+
+[node name="HUD" parent="." instance=ExtResource("10_nqkf1")]
+
+[editable path="North"]
+[editable path="North/obj_mouse_hole"]
+[editable path="North/obj_claw_marks"]
+[editable path="West"]
+[editable path="West/InteractableObject"]

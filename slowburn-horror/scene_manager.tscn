@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://ba50l45by68jr"]
+
+[ext_resource type="PackedScene" uid="uid://d31j4k8jix6wr" path="res://Scenes/scene_transition_rect.tscn" id="1_1plon"]
+[ext_resource type="Script" path="res://Scenes/scene_transition_rect.gd" id="1_smene"]
+
+[node name="SceneManager" type="CanvasLayer"]
+script = ExtResource("1_smene")
+
+[node name="SceneTransitionRect" parent="." instance=ExtResource("1_1plon")]
+z_index = 2
+script = null

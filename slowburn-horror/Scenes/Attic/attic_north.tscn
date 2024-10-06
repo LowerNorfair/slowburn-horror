@@ -1,0 +1,117 @@
+[gd_scene load_steps=12 format=3 uid="uid://dx7rqmqcp178c"]
+
+[ext_resource type="Texture2D" uid="uid://dpb5bq8u1gg18" path="res://Backgrounds/Attic01.png" id="1_t55ps"]
+[ext_resource type="PackedScene" uid="uid://t8h6hrvgnfsd" path="res://Objects/interactable_object.tscn" id="2_4y4sa"]
+[ext_resource type="Script" path="res://Scenes/interactable_object.gd" id="3_l8o5i"]
+[ext_resource type="FontFile" uid="uid://b5jovln421ieq" path="res://UI/Fonts/IBMPlexMono-Thin.ttf" id="4_jeb2q"]
+[ext_resource type="Texture2D" uid="uid://bv1qvd6v4klsu" path="res://UI/Cursors/arrow_left.png" id="5_4ls3j"]
+[ext_resource type="Texture2D" uid="uid://baxiq86ocjjqr" path="res://Objects/claw_marks.png" id="5_7hvd5"]
+[ext_resource type="Script" path="res://Scenes/inter_nav.gd" id="5_swa3y"]
+[ext_resource type="Texture2D" uid="uid://c5toia54rit6u" path="res://UI/Cursors/arrow-right.png" id="6_ukshl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dk8gk"]
+bg_color = Color(0, 0, 0, 0.494118)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yhexl"]
+radius = 71.2531
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_18c5i"]
+size = Vector2(80.5, 598)
+
+[node name="North" type="CanvasLayer"]
+
+[node name="BG" type="TextureRect" parent="."]
+offset_right = 600.0
+offset_bottom = 600.0
+texture = ExtResource("1_t55ps")
+expand_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="obj_mouse_hole" parent="." instance=ExtResource("2_4y4sa")]
+dlg_file = "obj_mouse_hole"
+
+[node name="CollisionPolygon2D" parent="obj_mouse_hole" index="0"]
+position = Vector2(-45, 184)
+polygon = PackedVector2Array(93, 192, 109, 246, 47, 248)
+
+[node name="Label" parent="obj_mouse_hole" index="1"]
+metadata/_edit_use_anchors_ = true
+
+[node name="obj_window" type="StaticBody2D" parent="."]
+input_pickable = true
+script = ExtResource("3_l8o5i")
+dlg_file = "obj_window"
+
+[node name="Label" type="Label" parent="obj_window"]
+offset_left = 304.0
+offset_top = 125.0
+offset_right = 448.0
+offset_bottom = 157.0
+theme_override_fonts/font = ExtResource("4_jeb2q")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_dk8gk")
+text = "Window"
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="obj_window"]
+position = Vector2(312, 245)
+shape = SubResource("CircleShape2D_yhexl")
+
+[node name="obj_claw_marks" parent="." instance=ExtResource("2_4y4sa")]
+process_mode = 4
+visible = false
+dlg_file = "obj_claw_marks"
+
+[node name="CollisionPolygon2D" parent="obj_claw_marks" index="0"]
+position = Vector2(354, 334)
+polygon = PackedVector2Array(87, 180, 100, 234, 67, 241, 53, 187, 63, 161)
+
+[node name="Label" parent="obj_claw_marks" index="1"]
+offset_left = 328.0
+offset_top = 453.0
+offset_right = 472.0
+offset_bottom = 485.0
+text = "Claw marks"
+
+[node name="Sprite2D" type="Sprite2D" parent="obj_claw_marks"]
+modulate = Color(1, 1, 1, 0.615686)
+position = Vector2(431, 541)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_7hvd5")
+
+[node name="Navigation" type="CanvasLayer" parent="."]
+
+[node name="Left" type="StaticBody2D" parent="Navigation"]
+position = Vector2(2, 119)
+input_pickable = true
+script = ExtResource("5_swa3y")
+direction = 3
+cursor = ExtResource("5_4ls3j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Navigation/Left"]
+position = Vector2(39, -56)
+shape = SubResource("RectangleShape2D_18c5i")
+
+[node name="Left2" type="StaticBody2D" parent="Navigation"]
+position = Vector2(2, 119)
+input_pickable = true
+script = ExtResource("5_swa3y")
+direction = 3
+cursor = ExtResource("5_4ls3j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Navigation/Left2"]
+position = Vector2(41, 626)
+shape = SubResource("RectangleShape2D_18c5i")
+
+[node name="Right" type="StaticBody2D" parent="Navigation"]
+input_pickable = true
+script = ExtResource("5_swa3y")
+direction = 1
+cursor = ExtResource("6_ukshl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Navigation/Right"]
+position = Vector2(556, 298)
+shape = SubResource("RectangleShape2D_18c5i")
+
+[editable path="obj_mouse_hole"]
+[editable path="obj_claw_marks"]

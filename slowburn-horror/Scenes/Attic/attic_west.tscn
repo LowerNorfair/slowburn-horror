@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://bc4e804lu6qur"]
+
+[ext_resource type="Texture2D" uid="uid://cjsg60t3opcx6" path="res://Backgrounds/attic04.png" id="1_vvrdl"]
+[ext_resource type="PackedScene" uid="uid://t8h6hrvgnfsd" path="res://Objects/interactable_object.tscn" id="2_gmw6h"]
+[ext_resource type="PackedScene" uid="uid://cw7jl03ltos6s" path="res://UI/Navigation/nav_button_inter.tscn" id="2_ulnub"]
+[ext_resource type="Texture2D" uid="uid://bv1qvd6v4klsu" path="res://UI/Cursors/arrow_left.png" id="5_gp8jg"]
+
+[node name="West" type="CanvasLayer"]
+
+[node name="BG" type="TextureRect" parent="."]
+offset_right = 600.0
+offset_bottom = 600.0
+texture = ExtResource("1_vvrdl")
+expand_mode = 2
+
+[node name="InteractableObject" parent="." instance=ExtResource("2_gmw6h")]
+dlg_file = "obj_spider_web"
+
+[node name="CollisionPolygon2D" parent="InteractableObject" index="0"]
+position = Vector2(109, -102)
+polygon = PackedVector2Array(185, 102, 181, 285, 84, 191, -4, 102)
+
+[node name="Label" parent="InteractableObject" index="1"]
+offset_left = 314.0
+offset_top = 72.0
+offset_right = 458.0
+offset_bottom = 104.0
+text = "Spider web"
+
+[node name="Navigation" type="CanvasLayer" parent="."]
+
+[node name="Left" parent="Navigation" instance=ExtResource("2_ulnub")]
+direction = 2
+cursor = ExtResource("5_gp8jg")
+
+[node name="Right" parent="Navigation" instance=ExtResource("2_ulnub")]
+position = Vector2(521, 1)
+
+[editable path="InteractableObject"]

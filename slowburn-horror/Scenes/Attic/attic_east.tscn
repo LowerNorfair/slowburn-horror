@@ -1,0 +1,113 @@
+[gd_scene load_steps=10 format=3 uid="uid://b8wmv8qct3ihn"]
+
+[ext_resource type="Texture2D" uid="uid://dalex7ur10a26" path="res://Backgrounds/attic02.png" id="1_ggmqy"]
+[ext_resource type="Script" path="res://Objects/reach_in.gd" id="2_e4v8v"]
+[ext_resource type="PackedScene" uid="uid://cw7jl03ltos6s" path="res://UI/Navigation/nav_button_inter.tscn" id="2_h3e87"]
+[ext_resource type="PackedScene" uid="uid://t8h6hrvgnfsd" path="res://Objects/interactable_object.tscn" id="2_sbmb0"]
+[ext_resource type="Script" path="res://Scenes/interactable_object.gd" id="3_p2rnr"]
+[ext_resource type="Texture2D" uid="uid://vo2rwq4hhgqx" path="res://Objects/stain_mask.png" id="3_x854w"]
+[ext_resource type="FontFile" uid="uid://b5jovln421ieq" path="res://UI/Fonts/IBMPlexMono-Thin.ttf" id="4_tmhmw"]
+[ext_resource type="Texture2D" uid="uid://bv1qvd6v4klsu" path="res://UI/Cursors/arrow_left.png" id="5_bcnra"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dk8gk"]
+bg_color = Color(0, 0, 0, 0.494118)
+
+[node name="East" type="CanvasLayer"]
+
+[node name="BG" type="TextureRect" parent="."]
+offset_right = 1200.0
+offset_bottom = 1200.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_ggmqy")
+expand_mode = 2
+
+[node name="obj_cardboard_boxes" parent="." instance=ExtResource("2_sbmb0")]
+dlg_file = "obj_cardboard_boxes"
+
+[node name="CollisionPolygon2D" parent="obj_cardboard_boxes" index="0"]
+position = Vector2(149, 173)
+polygon = PackedVector2Array(175, 141, 249, 140, 264, 204, 342, 214, 366, 244, 364, 361, 51, 379, -58, 348, -60, 255, 7, 194, 153, 195)
+
+[node name="Label" parent="obj_cardboard_boxes" index="1"]
+offset_left = 100.0
+offset_top = 326.0
+offset_right = 316.0
+offset_bottom = 358.0
+text = "Cardboard boxes"
+
+[node name="obj_stain" parent="." instance=ExtResource("2_sbmb0")]
+process_mode = 4
+visible = false
+dlg_file = "obj_stain"
+
+[node name="CollisionPolygon2D" parent="obj_stain" index="0"]
+position = Vector2(392, 324)
+polygon = PackedVector2Array(-23, 165, 108, 206, 65, 236, -28, 259, -97, 222)
+
+[node name="Label" parent="obj_stain" index="1"]
+offset_left = 437.0
+offset_top = 472.0
+offset_right = 527.0
+offset_bottom = 504.0
+text = "Stain
+"
+
+[node name="Sprite2D" type="Sprite2D" parent="obj_stain"]
+position = Vector2(405, 517)
+scale = Vector2(0.353, 0.5)
+texture = ExtResource("3_x854w")
+flip_h = true
+
+[node name="obj_lump" type="StaticBody2D" parent="."]
+process_mode = 4
+input_pickable = true
+script = ExtResource("3_p2rnr")
+dlg_file = "obj_lump"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="obj_lump"]
+z_index = 10
+position = Vector2(272, 197)
+polygon = PackedVector2Array(237, 202, 244, 334, 86, 344, 44, 196)
+
+[node name="Label" type="Label" parent="obj_lump"]
+offset_left = 260.0
+offset_top = 417.0
+offset_right = 321.0
+offset_bottom = 449.0
+theme_override_fonts/font = ExtResource("4_tmhmw")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_dk8gk")
+text = "Lump"
+
+[node name="obj_reach_in" type="StaticBody2D" parent="."]
+process_mode = 4
+input_pickable = true
+script = ExtResource("2_e4v8v")
+scene = "res://Scenes/finale.tscn"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="obj_reach_in"]
+z_index = 10
+position = Vector2(272, 194)
+polygon = PackedVector2Array(49, 205, 231, 206, 242, 336, 88, 352)
+
+[node name="Label" type="Label" parent="obj_reach_in"]
+offset_left = 430.0
+offset_top = 350.0
+offset_right = 545.0
+offset_bottom = 382.0
+theme_override_fonts/font = ExtResource("4_tmhmw")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_dk8gk")
+text = "Reach in"
+
+[node name="Navigation" type="CanvasLayer" parent="."]
+
+[node name="Left" parent="Navigation" instance=ExtResource("2_h3e87")]
+cursor = ExtResource("5_bcnra")
+
+[node name="Right" parent="Navigation" instance=ExtResource("2_h3e87")]
+position = Vector2(519, -1)
+direction = 2
+
+[editable path="obj_cardboard_boxes"]
+[editable path="obj_stain"]

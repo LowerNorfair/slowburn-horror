@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://bvpms4ewd2d3a"]
+
+[ext_resource type="Script" path="res://UI/dialogue_manager.gd" id="1_ehpxo"]
+[ext_resource type="FontFile" uid="uid://b5jovln421ieq" path="res://UI/Fonts/IBMPlexMono-Thin.ttf" id="1_klnhp"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_ehpxo")
+
+[node name="dialogue" type="Label" parent="."]
+z_index = 10
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -106.0
+offset_right = 300.0
+offset_bottom = 106.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_klnhp")
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2

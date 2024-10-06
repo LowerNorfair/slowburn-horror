@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://t8h6hrvgnfsd"]
+
+[ext_resource type="Script" path="res://Scenes/interactable_object.gd" id="1_s4g2x"]
+[ext_resource type="FontFile" uid="uid://b5jovln421ieq" path="res://UI/Fonts/IBMPlexMono-Thin.ttf" id="2_0xt7d"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dk8gk"]
+bg_color = Color(0, 0, 0, 0.494118)
+
+[node name="InteractableObject" type="StaticBody2D"]
+input_pickable = true
+script = ExtResource("1_s4g2x")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+z_index = 10
+position = Vector2(21, 295)
+polygon = PackedVector2Array(73, 157, 110, 242, 47, 253)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 115.0
+offset_top = 466.0
+offset_right = 205.0
+offset_bottom = 489.0
+theme_override_fonts/font = ExtResource("2_0xt7d")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_dk8gk")
+text = "Mouse hole"

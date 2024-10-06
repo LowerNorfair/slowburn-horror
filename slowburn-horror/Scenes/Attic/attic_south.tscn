@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://bcgxid7046x1a"]
+
+[ext_resource type="Texture2D" uid="uid://dnblv2jep40up" path="res://Backgrounds/Attic03.png" id="1_o5eei"]
+[ext_resource type="PackedScene" uid="uid://t8h6hrvgnfsd" path="res://Objects/interactable_object.tscn" id="2_03gdq"]
+[ext_resource type="PackedScene" uid="uid://cw7jl03ltos6s" path="res://UI/Navigation/nav_button_inter.tscn" id="4_pyoen"]
+[ext_resource type="Texture2D" uid="uid://bv1qvd6v4klsu" path="res://UI/Cursors/arrow_left.png" id="4_th72u"]
+
+[node name="South" type="CanvasLayer"]
+
+[node name="BG" type="TextureRect" parent="."]
+offset_right = 600.0
+offset_bottom = 600.0
+texture = ExtResource("1_o5eei")
+expand_mode = 2
+
+[node name="InteractableObject" parent="." instance=ExtResource("2_03gdq")]
+dlg_file = "obj_bat_colony"
+
+[node name="CollisionPolygon2D" parent="InteractableObject" index="0"]
+position = Vector2(205, -81)
+polygon = PackedVector2Array(122, 147, 199, 255, 29, 255)
+
+[node name="Label" parent="InteractableObject" index="1"]
+offset_left = 337.0
+offset_top = 201.0
+offset_right = 481.0
+offset_bottom = 233.0
+text = "Bat colony"
+
+[node name="Navigation" type="CanvasLayer" parent="."]
+
+[node name="Left" parent="Navigation" instance=ExtResource("4_pyoen")]
+direction = 1
+cursor = ExtResource("4_th72u")
+
+[node name="Right" parent="Navigation" instance=ExtResource("4_pyoen")]
+position = Vector2(518, 2)
+direction = 3
+
+[editable path="InteractableObject"]

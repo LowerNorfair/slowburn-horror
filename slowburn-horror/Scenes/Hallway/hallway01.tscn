@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://c15ff7y712asw"]
+
+[ext_resource type="Script" path="res://Scenes/Hallway/scene_hallway_01.gd" id="1_gclir"]
+[ext_resource type="Script" path="res://UI/Navigation/navigator.gd" id="2_idyfa"]
+[ext_resource type="Texture2D" uid="uid://r272rod53cj1" path="res://Backgrounds/hallway01.png" id="2_mn6do"]
+[ext_resource type="PackedScene" uid="uid://dtn5wbil33kkl" path="res://UI/Navigation/nav_button.tscn" id="3_y4abp"]
+[ext_resource type="Texture2D" uid="uid://drlpcf21epxgq" path="res://UI/Cursors/arrow-up.png" id="5_lwkdr"]
+[ext_resource type="PackedScene" uid="uid://bvpms4ewd2d3a" path="res://UI/HUD.tscn" id="5_vxp1e"]
+
+[node name="hallway01" type="Node"]
+script = ExtResource("1_gclir")
+
+[node name="Layout" type="CanvasLayer" parent="."]
+
+[node name="BG" type="TextureRect" parent="Layout"]
+offset_right = 600.0
+offset_bottom = 600.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_mn6do")
+metadata/_edit_use_anchors_ = true
+
+[node name="Navigator" type="CanvasLayer" parent="."]
+script = ExtResource("2_idyfa")
+
+[node name="Button" parent="Navigator" instance=ExtResource("3_y4abp")]
+anchors_preset = -1
+anchor_left = 0.643333
+anchor_top = -0.351667
+anchor_right = 0.8
+anchor_bottom = -0.351667
+offset_left = -77.0
+offset_right = 0.0
+grow_horizontal = 0
+type = 1
+scene_name = "res://Scenes/Hallway/hallway02.tscn"
+cursor = ExtResource("5_lwkdr")
+metadata/_edit_use_anchors_ = true
+
+[node name="HUD" parent="." instance=ExtResource("5_vxp1e")]
