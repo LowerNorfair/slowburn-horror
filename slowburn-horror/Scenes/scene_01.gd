@@ -10,6 +10,8 @@ func _ready() -> void:
 	bg = $Layout/BG
 	bg.modulate.a = 0
 	
+	Heartbeat.play()
+	
 	#disable navigation initally
 	GameManager.in_dialogue = true
 	return
@@ -25,7 +27,7 @@ func _process(delta):
 		set_process(false)
 
 func pulse_bg() -> void:
-	var max_opacity = 0.2
+	var max_opacity = 0.5
 	var duration = 0.5
 	var c = 0
 	
@@ -33,7 +35,7 @@ func pulse_bg() -> void:
 		Heartbeat.play_heartbeat()
 	elif counter == 2: 
 		Heartbeat.play_heartbeat()
-		max_opacity = 0.5
+		max_opacity = 0.7
 	elif counter == 3:
 		Heartbeat.play_tinitus()
 		Heartbeat.play_heartbeat()
@@ -54,7 +56,6 @@ func pulse_bg() -> void:
 			bg.modulate.a = lerp(1, 0, c/duration) * max_opacity
 			await get_tree().process_frame
 	else:
-		Heartbeat.play_static()
 		Heartbeat.set_resting()
 		start_dialogue.emit()
 		started = true

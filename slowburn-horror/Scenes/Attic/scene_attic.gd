@@ -11,7 +11,9 @@ var scene01 = "Scene03_attic01"
 #object management
 var object_count = 0
 @onready var claw_marks = $North/obj_claw_marks
+@onready var claw_marks_sprite = $North/obj_claw_marks_sprite
 @onready var stain = $East/obj_stain
+@onready var stain_sprite = $East/obj_stain_sprite
 @onready var lump = $East/obj_lump
 @onready var reach_in = $East/obj_reach_in
 var spawn_north = false
@@ -36,10 +38,12 @@ func _process(delta: float) -> void:
 	if(spawn_north && current_scene != Dir.NORTH):
 		claw_marks.process_mode = Node.PROCESS_MODE_INHERIT
 		claw_marks.visible = true
+		claw_marks_sprite.visible = true
 		spawn_north = false
-	if(spawn_east && current_scene != Dir.WEST):
+	if(spawn_east && current_scene != Dir.EAST):
 		stain.process_mode = Node.PROCESS_MODE_INHERIT
 		stain.visible = true
+		stain_sprite.visible = true
 		spawn_east = false
 		
 

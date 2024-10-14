@@ -52,7 +52,8 @@ offset_bottom = 504.0
 text = "Stain
 "
 
-[node name="Sprite2D" type="Sprite2D" parent="obj_stain"]
+[node name="obj_stain_sprite" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(405, 517)
 scale = Vector2(0.353, 0.5)
 texture = ExtResource("3_x854w")

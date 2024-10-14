@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://ba50l45by68jr"]
+[gd_scene load_steps=5 format=3 uid="uid://ba50l45by68jr"]
 
 [ext_resource type="PackedScene" uid="uid://d31j4k8jix6wr" path="res://Scenes/scene_transition_rect.tscn" id="1_1plon"]
 [ext_resource type="Script" path="res://Scenes/scene_transition_rect.gd" id="1_smene"]
+[ext_resource type="Script" path="res://UI/settings_menu.gd" id="3_0nemo"]
+[ext_resource type="Theme" uid="uid://g8cslf2hbexn" path="res://UI/ui_theme.tres" id="4_btc63"]
 
 [node name="SceneManager" type="CanvasLayer"]
 script = ExtResource("1_smene")
@@ -9,3 +11,64 @@ script = ExtResource("1_smene")
 [node name="SceneTransitionRect" parent="." instance=ExtResource("1_1plon")]
 z_index = 2
 script = null
+
+[node name="menu" type="CanvasLayer" parent="."]
+process_mode = 2
+layer = 3
+visible = false
+script = ExtResource("3_0nemo")
+
+[node name="ColorRect" type="ColorRect" parent="menu"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.729412)
+
+[node name="container" type="VBoxContainer" parent="menu"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -61.0
+offset_top = -97.0
+offset_right = 61.0
+offset_bottom = 97.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme = ExtResource("4_btc63")
+theme_override_constants/separation = 40
+
+[node name="Label" type="Label" parent="menu/container"]
+layout_mode = 2
+theme = ExtResource("4_btc63")
+text = "Volume"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="volume_slider" type="HSlider" parent="menu/container"]
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+
+[node name="return" type="Button" parent="menu/container"]
+layout_mode = 2
+theme = ExtResource("4_btc63")
+text = "Return"
+
+[node name="exit" type="Button" parent="menu/container"]
+layout_mode = 2
+text = "Exit"
+
+[node name="restart" type="Button" parent="menu/container"]
+visible = false
+layout_mode = 2
+text = "Restart"
+
+[connection signal="value_changed" from="menu/container/volume_slider" to="menu" method="_on_volume_slider_value_changed"]
+[connection signal="pressed" from="menu/container/return" to="menu" method="_on_return_pressed"]
+[connection signal="pressed" from="menu/container/exit" to="menu" method="_on_button_pressed"]
+[connection signal="pressed" from="menu/container/restart" to="menu" method="_on_restart_pressed"]

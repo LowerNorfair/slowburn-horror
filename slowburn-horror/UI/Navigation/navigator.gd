@@ -5,6 +5,7 @@ var enabled = true
 
 func _ready() -> void:
 	children = get_children()
+	disable_children()
 
 func _process(delta: float) -> void:
 	if GameManager.in_dialogue && enabled:

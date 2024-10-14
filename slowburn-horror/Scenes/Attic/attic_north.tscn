@@ -69,11 +69,13 @@ polygon = PackedVector2Array(87, 180, 100, 234, 67, 241, 53, 187, 63, 161)
 [node name="Label" parent="obj_claw_marks" index="1"]
 offset_left = 328.0
 offset_top = 453.0
-offset_right = 472.0
-offset_bottom = 485.0
-text = "Claw marks"
+offset_right = 400.0
+offset_bottom = 520.0
+text = "Claw 
+marks"
 
-[node name="Sprite2D" type="Sprite2D" parent="obj_claw_marks"]
+[node name="obj_claw_marks_sprite" type="Sprite2D" parent="."]
+visible = false
 modulate = Color(1, 1, 1, 0.615686)
 position = Vector2(431, 541)
 scale = Vector2(0.5, 0.5)

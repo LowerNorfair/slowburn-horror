@@ -4,6 +4,7 @@
 [ext_resource type="FontFile" uid="uid://b5jovln421ieq" path="res://UI/Fonts/IBMPlexMono-Thin.ttf" id="1_klnhp"]
 
 [node name="HUD" type="CanvasLayer"]
+layer = 2
 script = ExtResource("1_ehpxo")
 
 [node name="dialogue" type="Label" parent="."]

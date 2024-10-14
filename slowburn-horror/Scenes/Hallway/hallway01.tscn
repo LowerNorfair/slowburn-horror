@@ -1,11 +1,33 @@
-[gd_scene load_steps=7 format=3 uid="uid://c15ff7y712asw"]
+[gd_scene load_steps=18 format=3 uid="uid://c15ff7y712asw"]
 
 [ext_resource type="Script" path="res://Scenes/Hallway/scene_hallway_01.gd" id="1_gclir"]
 [ext_resource type="Script" path="res://UI/Navigation/navigator.gd" id="2_idyfa"]
 [ext_resource type="Texture2D" uid="uid://r272rod53cj1" path="res://Backgrounds/hallway01.png" id="2_mn6do"]
-[ext_resource type="PackedScene" uid="uid://dtn5wbil33kkl" path="res://UI/Navigation/nav_button.tscn" id="3_y4abp"]
+[ext_resource type="Script" path="res://UI/Navigation/nav_button.gd" id="4_cum16"]
 [ext_resource type="Texture2D" uid="uid://drlpcf21epxgq" path="res://UI/Cursors/arrow-up.png" id="5_lwkdr"]
 [ext_resource type="PackedScene" uid="uid://bvpms4ewd2d3a" path="res://UI/HUD.tscn" id="5_vxp1e"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_umg7a"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qc5c8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6ajo6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1pmnu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2rm4n"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2lxmq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_etpdg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uj1ut"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6rrfm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0lls6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2hawd"]
 
 [node name="hallway01" type="Node"]
 script = ExtResource("1_gclir")
@@ -22,18 +44,45 @@ metadata/_edit_use_anchors_ = true
 [node name="Navigator" type="CanvasLayer" parent="."]
 script = ExtResource("2_idyfa")
 
-[node name="Button" parent="Navigator" instance=ExtResource("3_y4abp")]
+[node name="Button" type="Button" parent="Navigator"]
 anchors_preset = -1
-anchor_left = 0.643333
-anchor_top = -0.351667
-anchor_right = 0.8
-anchor_bottom = -0.351667
-offset_left = -77.0
-offset_right = 0.0
-grow_horizontal = 0
-type = 1
+anchor_left = 0.541
+anchor_top = 0.279
+anchor_right = 0.803
+anchor_bottom = 0.635
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 0)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 0)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 0)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 0)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 0)
+theme_override_colors/font_color = Color(0, 0, 0, 0)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_disabled_color = Color(0, 0, 0, 0)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_umg7a")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_qc5c8")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_6ajo6")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_1pmnu")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_2rm4n")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_2lxmq")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_etpdg")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_uj1ut")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_6rrfm")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_0lls6")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_2hawd")
+script = ExtResource("4_cum16")
 scene_name = "res://Scenes/Hallway/hallway02.tscn"
 cursor = ExtResource("5_lwkdr")
 metadata/_edit_use_anchors_ = true
 
 [node name="HUD" parent="." instance=ExtResource("5_vxp1e")]
+
+[connection signal="mouse_entered" from="Navigator/Button" to="Navigator/Button" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Navigator/Button" to="Navigator/Button" method="_on_mouse_exited"]
+[connection signal="pressed" from="Navigator/Button" to="Navigator/Button" method="_on_pressed"]

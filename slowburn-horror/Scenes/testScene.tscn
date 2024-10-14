@@ -4,13 +4,15 @@
 
 [node name="TestScene" type="Node"]
 
-[node name="Button" type="Button" parent="."]
-offset_left = 131.0
-offset_top = 114.0
-offset_right = 225.0
-offset_bottom = 182.0
-text = "click me"
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+offset_left = 132.0
+offset_top = 117.0
+offset_right = 251.0
+offset_bottom = 198.0
+text = "click me!
+"
 script = ExtResource("1_o8cc2")
 
-[connection signal="pressed" from="Button" to="Button" method="_on_button_pressed"]
-[connection signal="pressed" from="Button" to="Button" method="change_scene"]
+[connection signal="pressed" from="CanvasLayer/Button" to="CanvasLayer/Button" method="_on_pressed"]

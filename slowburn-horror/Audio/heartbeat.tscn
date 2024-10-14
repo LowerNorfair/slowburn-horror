@@ -2,10 +2,11 @@
 
 [ext_resource type="AudioStream" uid="uid://c3w4mly6mkl8p" path="res://Audio/165300__terminator1505__heart-0-short.mp3" id="1_87hsh"]
 [ext_resource type="Script" path="res://Audio/heartbeat.gd" id="2_fa6oh"]
-[ext_resource type="AudioStream" uid="uid://dk7equakuo2n4" path="res://Audio/138408__robinhood76__03480-static-white-noise.wav" id="3_7klai"]
+[ext_resource type="AudioStream" uid="uid://bcvbhw4uga0td" path="res://Audio/wind.mp3" id="3_6k4mu"]
 [ext_resource type="AudioStream" uid="uid://brqh03xwlgetj" path="res://Audio/531490__lalopro__tinnitus-acufeno-pro.mp3" id="4_a5kkk"]
 
 [node name="Heartbeat" type="AudioStreamPlayer2D"]
+process_mode = 3
 stream = ExtResource("1_87hsh")
 volume_db = 10.0
 script = ExtResource("2_fa6oh")
@@ -14,9 +15,9 @@ script = ExtResource("2_fa6oh")
 wait_time = 2.0
 autostart = true
 
-[node name="static" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_7klai")
-volume_db = -30.0
+[node name="wind" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_6k4mu")
+volume_db = 5.0
 
 [node name="tinitus" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_a5kkk")

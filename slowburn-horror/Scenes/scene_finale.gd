@@ -41,7 +41,8 @@ func fade_bg_in():
 	tween.tween_property(bg, "modulate:a", 1, 0.5)
 
 func finish_him():
-	Heartbeat.stop()
+	Heartbeat.stop_heartbeat()
+	Heartbeat.stop_wind()
 	print("done")
 	$HUD/Timer.start()
 	$HUD/Timer.connect("timeout", spawn_end_btn)
@@ -54,4 +55,9 @@ func spawn_end_btn():
 	endbtn.disabled = false
 
 func _on_end_pressed():
+	#for desktop build
 	get_tree().quit()
+	#for web build
+	#get_tree().change_scene_to_file("res://Scenes/main.scn")
+	#Heartbeat.play_heartbeat()
+	#Heartbeat.play_wind()
